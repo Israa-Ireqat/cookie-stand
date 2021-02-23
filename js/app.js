@@ -11,10 +11,16 @@ this.totalPerHour = 0;
 //Random choice function
 Market.prototype.randomChoice = function () {
 for (let i = 0; i < time.length; i++) {
-let cookiesPerHour = Math.ceil(randomNumber(this.minimumCustomers,this.maximumCustomers) * this.averageCookies);
+let cookiesPerHour = Math.ceil(randomNumber(this.minimumCustomers, this.maximumCustomers) * this.averageCookies);
 this.totalCustomers.push(cookiesPerHour);
 this.totalPerHour += cookiesPerHour;
-}  
+}
+// Market.prototype.randomCustomer = function () {
+//     for(let i = 0; i < time.length; i++) {
+//       let hourSales = Math.ceil(randomNumber(this.minCustomers, this.maxCustomers) * this.customerAvgCookies);
+//       this.totalCustomers.push(hourSales);
+//       this.totalPerHour += hourSales;
+//     } 
 };
 // global function
 function randomNumber(min, max) {
@@ -68,8 +74,8 @@ Seattle.render();
 console.log(Seattle);
 //Tokyo
 const Tokyo = new Market('Tokyo', 3, 24,1.2);
-Seattle.randomChoice(3, 24,1.2);
-Seattle.render();
+Tokyo.randomChoice(3, 24,1.2);
+Tokyo.render();
 console.log(Tokyo);
 //Dubai
 const Dubai = new Market('Dubai', 11, 38, 3.7);
@@ -86,7 +92,10 @@ const Lima = new Market('Lima', 2, 16, 4.6);
 Lima.randomChoice(2, 16, 4.6);
 Lima.render();
 console.log(Lima);
-
+//
+// function randomNumber(min, max) {
+//     return Math.floor(Math.random() * (max - min + 1) + min);
+//   }
 //Table footer
 const Footer = function() {
 const tableElement = document.getElementById('myTable');
