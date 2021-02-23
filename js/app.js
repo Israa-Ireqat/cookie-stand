@@ -102,6 +102,7 @@ th2.textContent = Seattle.totalCustomers[i] + Tokyo.totalCustomers[i] + Dubai.to
 }
 const th3 = document.createElement('th');
 tr.appendChild(th3);
+//Ihave problem in totalPerHour
 th3.textContent = Seattle.totalPerHour + Tokyo.totalPerHour + Dubai.totalPerHour + Paris.totalPerHour + Lima.totalPerHour;
 };
 Footer();
