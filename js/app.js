@@ -1,4 +1,5 @@
 'use strict';
+Market.allMarket =[];
 let time = ['6 am', '7 am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2 pm', '3 pm', '4 pm', '5 pm', '6 pm', '7 pm'];
 function Market(name,minimumCustomers,maximumCustomers,averageCookies) {
 this.name = name;
@@ -7,6 +8,7 @@ this.maximumCustomers = maximumCustomers;
 this.averageCookies = averageCookies;
 this.totalCustomers = [];
 this.totalPerHour = 0;
+Market.allMarket.push(this);
 }
 //Random choice function
 Market.prototype.randomChoice = function () {
@@ -22,6 +24,17 @@ this.totalPerHour += cookiesPerHour;
 //       this.totalPerHour += hourSales;
 //     } 
 };
+const formElement = document.getElementById('newPlace');
+//console.log(formElement);
+formElement.addEventListener('submit', function() {
+const marketPlace = document.getElementById('marketPlace');
+const minCustomers = document.getElementById('minCustomers');
+const maxCustomers = document.getElementById('maxCustomers');
+const averagePerHour = document.getElementById('averagePerHour');
+marketPlace.randomChoice(minCustomers, maxCustomers, averagePerHour);
+marketPlace.render();
+//console.log(marketPlace);
+})
 // global function
 function randomNumber(min, max) {
 return Math.floor(Math.random() * (max - min + 1) + min);
