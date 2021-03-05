@@ -90,18 +90,6 @@ Lima.randomChoice(2, 16, 4.6);
 Lima.render();
 console.log(Lima);
 
-//Form event listener
-const Form = document.getElementById('newPlace');
-Form.addEventListener('submit',function (event) {
-event.preventDefault();
-
-const placeName = event.target.marketPlace.value;
-const minC = event.target.minCustomers.value;
-const maxC = event.target.maxCustomers.value;
-const avg = event.target.averagePerHour.value;
-console.log(placeName);
-});
-
 //Table footer
 const Footer = function() {
 const tableElement = document.getElementById('myTable');
@@ -121,3 +109,21 @@ tr.appendChild(th3);
 th3.textContent = Seattle.totalPerHour + Tokyo.totalPerHour + Dubai.totalPerHour + Paris.totalPerHour + Lima.totalPerHour;
 };
 Footer();
+
+//Form event listener
+const Form = document.getElementById('newPlace');
+Form.addEventListener('submit',function (event) {
+event.preventDefault();
+
+const placeName = event.target.marketPlace.value;
+const minC = event.target.minCustomers.value;
+const maxC = event.target.maxCustomers.value;
+const avg = event.target.averagePerHour.value;
+//console.log(placeName);
+const shop = new Market(placeName, minC ,maxC, avg);
+shop.randomChoice(minC,maxC,avg);
+const tableElement = document.getElementById('myTable');
+tableElement.removeChild( tableElement.lastChild );
+shop.render();
+Footer();
+});
