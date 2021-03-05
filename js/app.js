@@ -17,24 +17,8 @@ let cookiesPerHour = Math.ceil(randomNumber(this.minimumCustomers, this.maximumC
 this.totalCustomers.push(cookiesPerHour);
 this.totalPerHour += cookiesPerHour;
 }
-// Market.prototype.randomCustomer = function () {
-//     for(let i = 0; i < time.length; i++) {
-//       let hourSales = Math.ceil(randomNumber(this.minCustomers, this.maxCustomers) * this.customerAvgCookies);
-//       this.totalCustomers.push(hourSales);
-//       this.totalPerHour += hourSales;
-//     } 
 };
-const formElement = document.getElementById('newPlace');
-//console.log(formElement);
-formElement.addEventListener('submit', function() {
-const marketPlace = document.getElementById('marketPlace');
-const minCustomers = document.getElementById('minCustomers');
-const maxCustomers = document.getElementById('maxCustomers');
-const averagePerHour = document.getElementById('averagePerHour');
-marketPlace.randomChoice(minCustomers, maxCustomers, averagePerHour);
-marketPlace.render();
-//console.log(marketPlace);
-})
+
 // global function
 function randomNumber(min, max) {
 return Math.floor(Math.random() * (max - min + 1) + min);
@@ -105,10 +89,19 @@ const Lima = new Market('Lima', 2, 16, 4.6);
 Lima.randomChoice(2, 16, 4.6);
 Lima.render();
 console.log(Lima);
-//
-// function randomNumber(min, max) {
-//     return Math.floor(Math.random() * (max - min + 1) + min);
-//   }
+
+//Form event listener
+const Form = document.getElementById('newPlace');
+Form.addEventListener('submit',function (event) {
+event.preventDefault();
+
+const placeName = event.target.marketPlace.value;
+const minC = event.target.minCustomers.value;
+const maxC = event.target.maxCustomers.value;
+const avg = event.target.averagePerHour.value;
+console.log(placeName);
+});
+
 //Table footer
 const Footer = function() {
 const tableElement = document.getElementById('myTable');
@@ -124,7 +117,7 @@ th2.textContent = Seattle.totalCustomers[i] + Tokyo.totalCustomers[i] + Dubai.to
 }
 const th3 = document.createElement('th');
 tr.appendChild(th3);
-//Ihave problem in totalPerHour
+//Total of total
 th3.textContent = Seattle.totalPerHour + Tokyo.totalPerHour + Dubai.totalPerHour + Paris.totalPerHour + Lima.totalPerHour;
 };
 Footer();
